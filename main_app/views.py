@@ -1,19 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-
-class Pokemon:
-    def __init__(self, name, type, description, age):
-        self.name = name
-        self.type = type
-        self.description = description
-        self.age = age
-
-pokemon = [
-    Pokemon("Bulbasaur", "grass", "cute little green bulb", 0),
-    Pokemon("Pikachu", "electric", " playful yellow electric rat", 3),
-    Pokemon("Milotic", "water", "beautiful freshwater eel", 6),
-]
-
+from .models import Pokemon
 # Create your views here.
 
 def home(request):
@@ -23,4 +10,9 @@ def about(request):
     return render(request, "about.html")
 
 def pokemon_index(request):
+    pokemon = Pokemon.objects.all()
     return render(request, "pokemon/index.html", {"pokemon": pokemon})
+
+def pokemon_detail(request, p_id):
+    pokemon = Pokemon.objects.get(id=p_id)
+    return render(request, "pokemon/detail.html", {'pokemon': pokemon})
