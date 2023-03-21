@@ -14,7 +14,10 @@
             		<p>Age: Has not evolved yet</p>
         	{% endif %}
     	</div>
-			</a>
+		<div class="card-action">
+			<a href="{% url 'pokemon_update' pokemon.id %}">Edit</a>
+			<a href="{% url 'pokemon_delete' pokemon.id %}">Delete</a>
+	  </div>
 	</div>
 
 {% endblock %}
