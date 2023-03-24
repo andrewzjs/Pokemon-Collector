@@ -3,8 +3,10 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
+    # Generic URLs
     path("", views.home, name="home"),
     path("about/", views.about, name="about"),
+    path("accounts/signup/", views.signup, name="signup"),
     # Pokemon URLs
     path("pokemon/", views.pokemon_index, name="pokemon"),
     path("pokemon/<int:p_id>/", views.pokemon_detail, name="pokemon_detail"),
